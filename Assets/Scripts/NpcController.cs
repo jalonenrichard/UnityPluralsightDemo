@@ -7,7 +7,7 @@ public class NpcController : MonoBehaviour
 {
     public float PatrolTime = 10f;
     public float AggroRange = 10f;
-    public List<Transform> Waypoints;
+    public Transform[] Waypoints;
 
     private int _index;
     private float _speed, _agentSpeed;
@@ -21,10 +21,10 @@ public class NpcController : MonoBehaviour
         if (_agent != null)
             _agentSpeed = _agent.speed;
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _index = Random.Range(0, Waypoints.Count);
+        _index = Random.Range(0, Waypoints.Length);
 
         InvokeRepeating("Tick", 0, 0.5f);
-        if (Waypoints.Count > 0)
+        if (Waypoints.Length > 0)
         {
             InvokeRepeating("Patrol", 0, PatrolTime);
         }
@@ -32,7 +32,7 @@ public class NpcController : MonoBehaviour
 
     void Patrol()
     {
-        _index = _index == Waypoints.Count - 1 ? 0 : _index + 1;
+        _index = _index == Waypoints.Length - 1 ? 0 : _index + 1;
     }
 
     void Tick()

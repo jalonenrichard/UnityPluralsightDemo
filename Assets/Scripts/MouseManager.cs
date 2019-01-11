@@ -48,7 +48,7 @@ public class MouseManager : MonoBehaviour
                 Cursor.SetCursor(NormalCursor, new Vector2(16, 16), CursorMode.Auto);
             }
 
-            if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 if (door)
                 {
